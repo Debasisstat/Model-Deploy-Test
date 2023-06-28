@@ -2,9 +2,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import train_test_split
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn.metrics import accuracy_score
+# from sklearn.model_selection import train_test_split
 # from prediction import predict
 
 st.title('Classifying Iris Flowers')
@@ -24,15 +24,15 @@ with col2:
 # with open("prediction.py") as f:
 #     exec(f.read())
 
-# import joblib
-# def predict(data):
-#     clf = joblib.load('rf_model.sav')
-#     return clf.predict(data)
-
-import pickle
+import joblib
 def predict(data):
-    clf = pickle.load(open('rf_model.sav', 'rb'))
+    clf = joblib.load('rf_model.sav')
     return clf.predict(data)
+
+# import pickle
+# def predict(data):
+#     clf = pickle.load(open('rf_model.sav', 'rb'))
+#     return clf.predict(data)
 
 if st.button('Predict type of Iris'):
     result = predict(np.array([[sepal_l, sepal_w, petal_l, petal_w]]))
